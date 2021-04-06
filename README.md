@@ -1,5 +1,5 @@
-# Zen monitor
-Zen monitor is monitoring software for AMD Zen-based CPUs.
+# Zenmonitor3
+Zenmonitor3 is monitoring software for AMD Zen-based CPUs.
 
 It can monitor these values:
  - CPU Temperature
@@ -34,7 +34,7 @@ Alternatively, you can set capabilities to zenmonitor executable: `sudo setcap c
 ``--coreid`` - Display core_id instead of core index
 
 ## Installing
-By default, Zenmonitor will be installed to /usr/local.
+By default, Zenmonitor3 will be installed to /usr/local.
 ```
 sudo make install
 ```
@@ -64,4 +64,4 @@ sudo make install
 sudo make install-polkit
 ```
 ## Setup on Arch
-You may use the AUR package [zenmonitor-git](https://aur.archlinux.org/packages/zenmonitor-git/) to install via [traditional method](https://wiki.archlinux.org/index.php/Arch_User_Repository) or using an AUR helper (like yay)
+You may use the AUR package [zenmonitor3-git](https://aur.archlinux.org/packages/zenmonitor3-git/) to install via [traditional method](https://wiki.archlinux.org/index.php/Arch_User_Repository) or using an AUR helper (like yay).
