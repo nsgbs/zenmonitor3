@@ -351,7 +351,7 @@ int start_gui (SensorSource *ss) {
         init_sensors();
 
         resize_to_treeview(GTK_WINDOW(window), GTK_TREE_VIEW(treeview));
-        timeout = g_timeout_add(300, update_data, NULL);
+        timeout = g_timeout_add(1000, update_data, NULL);
     }
     else{
         dialog = gtk_message_dialog_new(GTK_WINDOW (window),
