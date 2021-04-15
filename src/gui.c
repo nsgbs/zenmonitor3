@@ -144,11 +144,12 @@ static void add_columns (GtkTreeView *treeview) {
 
 static void about_btn_clicked(GtkButton *button, gpointer user_data) {
     GtkWidget *dialog;
-    const gchar *website = "https://github.com/ocerman/zenmonitor";
-    const gchar *msg = "<b>Zen Monitor</b> %s\n"
-                       "Monitoring software for AMD Zen-based CPUs\n"
+    const gchar *website = "https://github.com/Ta180m/zenmonitor3";
+    const gchar *msg = "<b>Zenmonitor3</b> %s\n"
+                       "Zenmonitor3 is monitoring software for AMD Zen-based CPUs, now with Zen 3 support!\n"
                        "<a href=\"%s\">%s</a>\n\n"
-                       "Created by: Ondrej Čerman";
+                       "Created by: Ondrej Čerman\n"
+                       "Fork by: Anthony Wang";
 
     dialog = gtk_message_dialog_new_with_markup(GTK_WINDOW (window),
                                     GTK_DIALOG_MODAL | GTK_DIALOG_DESTROY_WITH_PARENT,
@@ -295,7 +296,7 @@ int start_gui (SensorSource *ss) {
 
     header = gtk_header_bar_new();
     gtk_header_bar_set_show_close_button(GTK_HEADER_BAR (header), TRUE);
-    gtk_header_bar_set_title(GTK_HEADER_BAR (header), "Zen monitor");
+    gtk_header_bar_set_title(GTK_HEADER_BAR (header), "Zenmonitor3");
     gtk_header_bar_set_has_subtitle(GTK_HEADER_BAR (header), TRUE);
     gtk_header_bar_set_subtitle(GTK_HEADER_BAR (header), cpu_model());
     gtk_window_set_titlebar (GTK_WINDOW (window), header);
@@ -311,7 +312,7 @@ int start_gui (SensorSource *ss) {
     about_btn = gtk_button_new();
     gtk_container_add(GTK_CONTAINER(about_btn), gtk_image_new_from_icon_name("dialog-information", GTK_ICON_SIZE_BUTTON));
     gtk_container_add(GTK_CONTAINER(box), about_btn);
-    gtk_widget_set_tooltip_text(about_btn, "About Zen monitor");
+    gtk_widget_set_tooltip_text(about_btn, "About Zenmonitor3");
 
     clear_btn = gtk_button_new();
     gtk_container_add(GTK_CONTAINER(clear_btn), gtk_image_new_from_icon_name("edit-clear-all", GTK_ICON_SIZE_BUTTON));
