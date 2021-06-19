@@ -11,10 +11,10 @@ It can monitor these values:
 ![screenshot](screenshot.png)
 
 ## Dependencies
- - [zenpower driver](https://github.com/ocerman/zenpower/) - For monitoring CPU temperature and SVI2 sensors
+ - [zenpower3 driver](https://github.com/Ta180m/zenpower3) - For monitoring CPU temperature and SVI2 sensors
  - MSR driver - For monitoring Package/Core Power (RAPL)
 
-Follow [zenpower README.md](https://github.com/ocerman/zenpower/blob/master/README.md) to install and activate zenpower module.
+Follow [zenpower README.md](https://github.com/Ta180m/zenpower3/blob/master/README.md) to install and activate zenpower module.
 Enter `sudo modprobe msr` to enable MSR driver.
 
 ## Building 
@@ -50,7 +50,7 @@ sudo make uninstall
 ```
 
 ## Setup on ubuntu
-First follow [installation instructions on zenpower](https://github.com/ocerman/zenpower/blob/master/README.md#installation-commands-for-ubuntu)
+First follow [installation instructions on zenpower3](https://github.com/Ta180m/zenpower3/blob/master/README.md#installation-commands-for-ubuntu)
 Then:
 ```
 sudo modprobe msr
