@@ -50,7 +50,7 @@ sudo make uninstall
 ```
 
 ## Setup on Ubuntu
-First follow [installation instructions on zenpower3](https://github.com/Ta180m/zenpower3/blob/master/README.md#installation-commands-for-ubuntu)
+First follow [installation instructions on zenpower3](https://github.com/Ta180m/zenpower3/blob/master/README.md#installation-for-ubuntu)
 Then:
 ```sh
 sudo modprobe msr
@@ -58,7 +58,7 @@ sudo bash -c 'echo "msr" > /etc/modules-load.d/msr.conf'
 sudo apt install build-essential libgtk-3-dev git
 cd ~
 git clone https://github.com/Ta180m/zenmonitor3
-cd zenmonitor
+cd zenmonitor3
 make
 sudo make install
 sudo make install-polkit
