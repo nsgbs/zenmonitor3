@@ -19,7 +19,7 @@ Enter `sudo modprobe msr` to enable MSR driver.
 
 ## Building 
 Make sure that GTK3 dev package and common build tools are installed.
-```
+```sh
 make
 ```
 
@@ -35,24 +35,24 @@ Alternatively, you can set capabilities to zenmonitor executable: `sudo setcap c
 
 ## Installing
 By default, Zenmonitor3 will be installed to /usr/local.
-```
+```sh
 sudo make install
 ```
 
 To add menu item for launching zenpower as root (Polkit is required):
-```
+```sh
 sudo make install-polkit
 ```
 
 ## Uninstalling
-```
+```sh
 sudo make uninstall
 ```
 
-## Setup on ubuntu
+## Setup on Ubuntu
 First follow [installation instructions on zenpower3](https://github.com/Ta180m/zenpower3/blob/master/README.md#installation-commands-for-ubuntu)
 Then:
-```
+```sh
 sudo modprobe msr
 sudo bash -c 'echo "msr" > /etc/modules-load.d/msr.conf'
 sudo apt install build-essential libgtk-3-dev git
@@ -63,5 +63,6 @@ make
 sudo make install
 sudo make install-polkit
 ```
+
 ## Setup on Arch
-You may use the AUR package [zenmonitor3-git](https://aur.archlinux.org/packages/zenmonitor3-git/) to install via [traditional method](https://wiki.archlinux.org/index.php/Arch_User_Repository) or using an AUR helper (like yay).
+You may use the AUR package [zenmonitor3-git](https://aur.archlinux.org/packages/zenmonitor3-git/) to install via [traditional method](https://wiki.archlinux.org/index.php/Arch_User_Repository) or using an AUR helper.
