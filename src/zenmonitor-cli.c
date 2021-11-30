@@ -14,6 +14,7 @@ gdouble delay = 0.5;
 gchar *file = "";
 SensorDataStore *store;
 int quit = 0;
+int output_once = 0;
 
 static GOptionEntry options[] = {
     {"file", 'f', G_OPTION_FLAG_NONE, G_OPTION_ARG_STRING, &file,
@@ -22,6 +23,8 @@ static GOptionEntry options[] = {
      "Interval of refreshing informations", "SECONDS"},
     {"coreid", 'c', 0, G_OPTION_ARG_NONE, &display_coreid,
      "Display core_id instead of core index", NULL},
+    {"output-once", 'o', 0, G_OPTION_ARG_NONE, &output_once,
+     "Output CPU information once and quit", NULL},
     {NULL}};
 
 static SensorSource sensor_sources[] = {
@@ -164,8 +167,12 @@ void update_data()
 void start_watching()
 {
     while(!quit)
-    {
+    {   
         update_data();
+        if (output_once)
+        {
+            break;
+        }
         usleep(delay * 1000 * 1000);
     }
 }
@@ -190,7 +197,6 @@ int main(int argc, char *argv[])
 
     init_sensors();
     start_watching();
-
     sensor_data_store_free(store);
 
     return EXIT_SUCCESS;
