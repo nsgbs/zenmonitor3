@@ -4,6 +4,7 @@
 #include <time.h>
 #include <unistd.h>
 #include <signal.h>
+#include <ncurses.h>
 #include "msr.h"
 #include "os.h"
 #include "zenpower.h"
@@ -14,6 +15,8 @@ gdouble delay = 0.5;
 gchar *file = "";
 SensorDataStore *store;
 int quit = 0;
+int refresh_in_place = 0;
+int output_once = 0;
 
 static GOptionEntry options[] = {
     {"file", 'f', G_OPTION_FLAG_NONE, G_OPTION_ARG_STRING, &file,
@@ -22,6 +25,10 @@ static GOptionEntry options[] = {
      "Interval of refreshing informations", "SECONDS"},
     {"coreid", 'c', 0, G_OPTION_ARG_NONE, &display_coreid,
      "Display core_id instead of core index", NULL},
+    {"refresh-in-place", 'r', 0, G_OPTION_ARG_NONE, &refresh_in_place,
+     "Whether to flush stdout block in-place.", NULL},
+    {"output-once", 'o', 0, G_OPTION_ARG_NONE, &output_once,
+     "Output CPU information once and quit", NULL},
     {NULL}};
 
 static SensorSource sensor_sources[] = {
@@ -138,7 +145,7 @@ void update_data()
     const SensorInit *sensorData;
 
     sensor_data_store_keep_time(store);
-
+    int i = 1; //ncurses uses 1-based indexing.
     for(source = sensor_sources; source->drv; source++)
     {
         if(source->enabled)
@@ -148,11 +155,19 @@ void update_data()
             {
                 node = source->sensors;
 
-                while(node)
+                while (node)
                 {
-                    sensorData = (SensorInit*)node->data;
+                    sensorData = (SensorInit *)node->data;
                     sensor_data_store_add_data(store, sensorData->label, *sensorData->value);
-                    printf("%s\t%f\n", sensorData->label, *sensorData->value);
+                    if (refresh_in_place)
+                    {
+                        mvprintw(i++, 0, "%s\t%f", sensorData->label, *sensorData->value);
+                        refresh();
+                    }
+                    else
+                    {
+                        printf("%s\t%f\n", sensorData->label, *sensorData->value);
+                    }
                     node = node->next;
                 }
             }
@@ -164,8 +179,12 @@ void update_data()
 void start_watching()
 {
     while(!quit)
-    {
+    {   
         update_data();
+        if (output_once)
+        {
+            break;
+        }
         usleep(delay * 1000 * 1000);
     }
 }
@@ -189,8 +208,16 @@ int main(int argc, char *argv[])
     store = sensor_data_store_new();
 
     init_sensors();
+    if (refresh_in_place)
+    {
+        initscr();
+        curs_set(0);
+    }
     start_watching();
-
+    if (refresh_in_place)
+    {
+        endwin();
+    }
     sensor_data_store_free(store);
 
     return EXIT_SUCCESS;
