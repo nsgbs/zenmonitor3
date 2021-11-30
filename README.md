@@ -55,7 +55,7 @@ Then:
 ```sh
 sudo modprobe msr
 sudo bash -c 'echo "msr" > /etc/modules-load.d/msr.conf'
-sudo apt install build-essential libgtk-3-dev git
+sudo apt install build-essential libgtk-3-dev libncurses5-dev git
 cd ~
 git clone https://github.com/Ta180m/zenmonitor3
 cd zenmonitor3
