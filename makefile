@@ -52,6 +52,9 @@ uninstall:
 	rm -f $(DESTDIR)$(PREFIX)/share/applications/zenmonitor-root.desktop
 	rm -f $(DESTDIR)/usr/share/polkit-1/actions/org.pkexec.zenmonitor.policy
 
+uninstall-cli:
+	rm -f $(DESTDIR)$(PREFIX)/bin/zenmonitor-cli
+
 all: build build-cli
 
 clean:
