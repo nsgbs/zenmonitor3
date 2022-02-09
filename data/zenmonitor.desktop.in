@@ -2,6 +2,7 @@
 Name=Zenmonitor
 Comment=Monitoring software for AMD Zen-based CPUs
 Exec=@APP_EXEC@
+Icon=utilities-system-monitor
 Type=Application
 Categories=GTK;System;
 Terminal=false
