@@ -29,7 +29,7 @@ install:
 	install -m 755 zenmonitor $(DESTDIR)$(PREFIX)/bin
 
 	mkdir -p $(DESTDIR)$(PREFIX)/share/applications
-	sed -e "s|@APP_EXEC@|${DESTDIR}${PREFIX}/bin/zenmonitor|" \
+	sed -e "s|@APP_EXEC@|${PREFIX}/bin/zenmonitor|" \
 			data/zenmonitor.desktop.in > \
 			$(DESTDIR)$(PREFIX)/share/applications/zenmonitor.desktop
 
@@ -38,11 +38,11 @@ install-cli:
 	install -m 755 zenmonitor-cli $(DESTDIR)$(PREFIX)/bin
 
 install-polkit:
-	sed -e "s|@APP_EXEC@|${DESTDIR}${PREFIX}/bin/zenmonitor|" \
+	sed -e "s|@APP_EXEC@|${PREFIX}/bin/zenmonitor|" \
 			data/zenmonitor-root.desktop.in > \
 			$(DESTDIR)$(PREFIX)/share/applications/zenmonitor-root.desktop
 
-	sed -e "s|@APP_EXEC@|${DESTDIR}${PREFIX}/bin/zenmonitor|" \
+	sed -e "s|@APP_EXEC@|${PREFIX}/bin/zenmonitor|" \
 			data/org.pkexec.zenmonitor.policy.in > \
 			$(DESTDIR)/usr/share/polkit-1/actions/org.pkexec.zenmonitor.policy
 
