@@ -66,3 +66,6 @@ sudo make install-polkit
 
 ## Setup on Arch
 You may use the AUR package [zenmonitor3-git](https://aur.archlinux.org/packages/zenmonitor3-git/) to install via [traditional method](https://wiki.archlinux.org/index.php/Arch_User_Repository) or using an AUR helper.
+
+## Installation for Fedora 35+
+You can install it from the [copr package repo](https://copr.fedorainfracloud.org/coprs/birkch/zenpower3/)
