@@ -43,7 +43,7 @@ gboolean check_zen() {
 
 gchar *cpu_model() {
     guint32 eax = 0, ebx = 0, ecx = 0, edx = 0;
-    char model[48];
+    char model[49];
 
     // AMD PPR: page 65-68 - CPUID_Fn80000002_EAX-CPUID_Fn80000004_EDX
     __get_cpuid(0x80000002, &eax, &ebx, &ecx, &edx);
